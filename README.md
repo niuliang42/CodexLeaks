@@ -13,4 +13,15 @@ The code repo for USENIX Security 2023 paper **CodexLeaks: Privacy Leaks from Co
 ```
 
 ## File Organization
-**TO BE ADDED**
+| File                         	| Functionality                                                       	|
+| ----------------------------- | --------------------------------------------------------------------- |
+| main.py                    	| OpenAI Query procedure file.                                        	|
+| config.py                    	| Configurations.                                                    	|
+| Prompt.py                    	| Prompts and Query relates classes definitions.                        |
+| utils.py                    	| Utility functions.                                                    |
+| /resources/templates.py       | Prompts and templates.                                                |
+| /Blind_MI/                    | Blind MI attack related code.                                        	|
+| /annotator/                   | The web application for annotating the responses from Codex.         	|
+
+## Note
+Codex is shutdown by OpenAI, so the code is no longer runnable.

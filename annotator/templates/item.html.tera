@@ -1,0 +1,70 @@
+    <ul id={{ s.id }}>
+        <li>
+            <h4>{{ s.id }} : {{ s.category }} ({{ s.note }})</h4>
+        </li>
+        Input trigger code (prompt):<br>
+        <div class="codeblock">
+            <pre>{{ s.input }}</pre>
+        </div>
+        Template:<br>
+        <div class="codeblock">
+            <pre>{{ s.template }}</pre>
+        </div>
+        The {{ s.choice_id }}th choice:
+        <div class="codeblock">
+            <pre>{{ s.choice}}</pre>
+        </div>
+        Tokens to search on GitHub in {{ s.choice_id }}th choice:
+        <div class="codeblock">
+            <pre>{{ s.to_search }}</pre>
+        </div>
+
+        {% if s.url %}
+            GitHub Search Result:
+            <div class="ghsearch">
+                Number of results: <b>{{ s.total_count }}</b><br>
+                Link to search page: <a href="{{ s.url }}">{{s.url}}</a>
+            </div>
+        {% endif %}
+
+
+        <div class= "form-box {{ s.label }}">
+            MI_label: <b>{{ s.MI_label }}</b> <br>
+            Current Label: <b>{{ s.label }}</b>
+            {# <form action="/" , method="post"> #}
+            <form id="form-{{ s.id }}">
+                <p>Please select the label:</p>
+                <input type="hidden" name="id" id="id-{{ s.id }}" value={{ s.id }}>
+                <label for="id-{{ s.id }}">{{ s.id }}.</label>
+
+                <input type="radio" name="label" id="label0-{{ s.id }}" value="unknown" {% if s.label == "unknown" %} checked {% endif %} >
+                <label for="label0-{{ s.id }}">Unknown</label>
+
+                <input type="radio" name="label" id="label1-{{ s.id }}" value="yes" {% if s.label == "yes" %} checked {% endif %} >
+                <label for="label1-{{ s.id }}">Yes</label>
+
+                <input type="radio" name="label" id="label2-{{ s.id }}" value="likely" {% if s.label == "likely" %} checked {% endif %} >
+                <label for="label2-{{ s.id }}">Likely</label>
+
+                <input type="radio" name="label" id="label3-{{ s.id }}" value="notlikely" {% if s.label == "notlikely" %} checked {% endif %} >
+                <label for="label3-{{ s.id }}">Not Likely</label>
+
+                <input type="radio" name="label" id="label4-{{ s.id }}" value="no" {% if s.label == "no" %} checked {% endif %} >
+                <label for="label4">No</label>
+
+                {# <input type="radio" name="label" id="label5-{{ s.id }}" value="0" {% if s.label == "0" %} checked {% endif %} >
+                <label for="label5">0-Nonmember</label>
+
+                <input type="radio" name="label" id="label6-{{ s.id }}" value="1" {% if s.label == "1" %} checked {% endif %} >
+                <label for="label6">1-Member</label> #}
+
+                <button type="button" onclick="updateItem({{ s.id }})">Update</button>
+                <br>
+
+                <label for="to_search">To search on github:</label><br>
+                <input type="text" name="to_search" id="to_search-{{ s.id }}">
+                <button type="button" onclick="ghsearchItem({{ s.id }})">Search on GitHub</button>
+                <br>
+            </form>
+        </div>
+    </ul>

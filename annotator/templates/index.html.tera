@@ -1,0 +1,10 @@
+{% extends "base" %}
+
+{% block content %}
+<h2>Here are your responses:</h2>
+{% for s in items %}
+<div class="item-box" id="item-box-{{ s.id }}">
+    {% include "item" %}
+</div>
+{% endfor %}
+{% endblock content %}
